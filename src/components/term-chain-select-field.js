@@ -85,9 +85,7 @@ Vue.component('pno-term-chain-select-field', {
 
 				this.emitMethod(this.value)
 
-				if (HolderClass === "pno-chain-select-value-holder") {
-					document.getElementById(HolderID).value = selectedTerms;
-				}
+				document.getElementById(HolderID).value = selectedTerms;
 
 			},
 			deep: true
