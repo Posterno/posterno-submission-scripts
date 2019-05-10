@@ -23,7 +23,7 @@ function pno_load_listing_submission_form_assets() {
 	}
 
 	$version = PNO_VERSION;
-	$is_dev = defined( 'PNO_VUE_DEV' ) && PNO_VUE_DEV === true ? true : false;
+	$is_dev  = defined( 'PNO_VUE_DEV' ) && PNO_VUE_DEV === true ? true : false;
 
 	if ( $is_dev ) {
 
@@ -36,4 +36,4 @@ function pno_load_listing_submission_form_assets() {
 	wp_enqueue_script( 'pno-listing-submission-form' );
 
 }
-add_action( '$tag:string', 'pno_load_listing_submission_form_assets' );
+add_action( 'wp_enqueue_scripts', 'pno_load_listing_submission_form_assets' );
