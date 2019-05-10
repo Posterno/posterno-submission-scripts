@@ -25,15 +25,32 @@ function pno_load_listing_submission_form_assets() {
 	$version = PNO_VERSION;
 	$is_dev  = defined( 'PNO_VUE_DEV' ) && PNO_VUE_DEV === true ? true : false;
 
+	// Styles.
+	wp_register_style( 'pno-submission-select2-style', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css', false, $version );
+	wp_register_style( 'pno-submission-flatpickr-style', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css', [], $version );
+
+	// Scripts.
+	wp_register_script( 'pno-submission-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js', array( 'jquery' ), $version, true );
+	wp_register_script( 'pno-submission-flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', false, $version, true );
+
 	if ( $is_dev ) {
 
+		wp_register_script( 'pno-vuejs', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', [], $version, true );
 		wp_register_script( 'pno-listing-submission-form', 'http://localhost:4001/app.js', [], $version, true );
 
 	} else {
 
+		wp_register_script( 'pno-vuejs', 'https://cdn.jsdelivr.net/npm/vue', [], $version, true );
+
 	}
 
+	wp_enqueue_style( 'pno-submission-select2-style' );
+	wp_enqueue_style( 'pno-submission-flatpickr-style' );
+
+	wp_enqueue_script( 'pno-submission-select2' );
+	wp_enqueue_script( 'pno-submission-flatpickr' );
+	wp_enqueue_script( 'pno-vuejs' );
 	wp_enqueue_script( 'pno-listing-submission-form' );
 
 }
-add_action( 'wp_enqueue_scripts', 'pno_load_listing_submission_form_assets' );
+add_action( 'wp_enqueue_scripts', 'pno_load_listing_submission_form_assets', 20 );

@@ -1,8 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
+/**
+ * Enhance the frontend listing submission form with custom inline templates.
+ */
 
-Vue.config.productionTip = false
+/*global Vue:true*/
+import './components/select2.js'
+import './components/flatpickr.js'
+import './components/social-profiles-field.js'
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+new Vue().$mount('#pno-form-listingSubmission, #pno-form-listing-edit')
