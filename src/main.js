@@ -9,5 +9,6 @@ import './components/social-profiles-field.js'
 import './components/listing-location-selector.js'
 import './components/listing-opening-hours.js'
 import './components/term-chain-select-field.js'
+import './components/listing-category-selector.js'
 
 new Vue().$mount('#pno-form-listingSubmission, #pno-form-listing-edit')
