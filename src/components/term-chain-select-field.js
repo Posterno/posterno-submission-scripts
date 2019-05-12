@@ -22,6 +22,8 @@ Vue.component('pno-term-chain-select-field', {
 
 		let storedValues = this.getSavedValues()
 
+		console.log( storedValues )
+
 		if (!_isEmpty(storedValues)) {
 
 			var values = JSON.parse(storedValues)
@@ -64,11 +66,7 @@ Vue.component('pno-term-chain-select-field', {
 			var HolderID = this.$el.nextElementSibling.id
 			var HolderClass = this.$el.nextElementSibling.className
 
-			if (HolderClass === "pno-chain-select-value-holder") {
-				return document.getElementById(HolderID).value
-			}
-
-			return false
+			return document.getElementById(HolderID).value
 		}
 	},
 	watch: {
