@@ -12,4 +12,4 @@ import './components/term-chain-select-field.js'
 import './components/listing-category-selector.js'
 import './components/listing-tags-selector.js'
 
-new Vue().$mount('#pno-form-listingSubmission, #pno-form-listing-edit')
+new Vue().$mount('#pno-form-listingSubmission, #pno-form-listingEdit')
