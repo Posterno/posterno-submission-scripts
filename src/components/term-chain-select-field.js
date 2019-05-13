@@ -22,8 +22,6 @@ Vue.component('pno-term-chain-select-field', {
 
 		let storedValues = this.getSavedValues()
 
-		console.log( storedValues )
-
 		if (!_isEmpty(storedValues)) {
 
 			var values = JSON.parse(storedValues)
