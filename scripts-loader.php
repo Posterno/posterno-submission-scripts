@@ -60,8 +60,8 @@ function pno_load_listing_submission_form_assets() {
 		} else {
 
 			wp_register_script( 'pno-vuejs', 'https://cdn.jsdelivr.net/npm/vue', [], $version, true );
-			wp_register_script( 'pno-listing-submission-form-vendors', PNO_PLUGIN_URL . 'includes/components/posterno-submission-scripts/dist/js/chunk-vendors.js' , [], $version, true );
-			wp_register_script( 'pno-listing-submission-form', PNO_PLUGIN_URL . 'includes/components/posterno-submission-scripts/dist/js/app.js' , [ 'pno-listing-submission-form-vendors' ], $version, true );
+			wp_register_script( 'pno-listing-submission-form-vendors', PNO_PLUGIN_URL . 'vendor/posterno/posterno-submission-scripts/dist/js/chunk-vendors.js' , [], $version, true );
+			wp_register_script( 'pno-listing-submission-form', PNO_PLUGIN_URL . 'vendor/posterno/posterno-submission-scripts/dist/js/app.js' , [ 'pno-listing-submission-form-vendors' ], $version, true );
 
 		}
 
