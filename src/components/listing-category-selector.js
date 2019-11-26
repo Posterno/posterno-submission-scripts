@@ -26,7 +26,7 @@ Vue.component('pno-listing-category-selector', {
 		// Load selected categories of a listing from the database when viewing the edit form.
 		var savedCategories = this.getSavedCategories()
 
-		if ( ! savedCategories.length ) {
+		if ( ! savedCategories.length && savedCategories !== false ) {
 			savedCategories = [ savedCategories ]
 		}
 
