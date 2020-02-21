@@ -9,8 +9,8 @@ Vue.component('pno-listing-category-selector', {
 	},
 	props: {
 		taxonomy: '',
-		emitterid: false,
-		terms: false
+		emitterid: null,
+		terms: null
 	},
 	data() {
 		return {
@@ -48,7 +48,11 @@ Vue.component('pno-listing-category-selector', {
 
 				this.emitMethod(this.value)
 
-				document.getElementById('pno-field-listing_categories').value = JSON.stringify(this.value);
+				if ( this.value ) {
+					document.getElementById('pno-field-listing_categories').value = JSON.stringify(this.value);
+				} else {
+					document.getElementById('pno-field-listing_categories').value = '';
+				}
 
 			},
 		},
