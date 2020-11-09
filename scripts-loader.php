@@ -65,11 +65,16 @@ function pno_load_listing_submission_form_assets() {
 
 		}
 
+		wp_register_style( 'trumbowyg-css', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/ui/trumbowyg.min.css', [], $version );
+		wp_register_script( 'trumbowyg', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/trumbowyg.min.js', [], $version, true );
+
 		// Load styles.
 		wp_enqueue_style( 'pno-submission-select2-style' );
 		wp_enqueue_style( 'pno-submission-flatpickr-style' );
+		wp_enqueue_style( 'trumbowyg-css' );
 
 		// Load scripts.
+		wp_enqueue_script( 'trumbowyg' );
 		wp_enqueue_script( 'pno-submission-select2' );
 		wp_enqueue_script( 'pno-submission-flatpickr' );
 		wp_enqueue_script( 'pno-vuejs' );
@@ -80,3 +85,40 @@ function pno_load_listing_submission_form_assets() {
 
 }
 add_action( 'wp_enqueue_scripts', 'pno_load_listing_submission_form_assets', 20 );
+
+/**
+ * Inject script for editor field.
+ */
+add_action( 'wp_footer', function() {
+
+	if ( is_page( pno_get_listing_submission_page_id() ) || is_page( pno_get_listing_editing_page_id() ) ) {
+		?>
+		<style>
+			.trumbowyg-modal-box .trumbowyg-modal-button {
+				font-size: 14px;
+				padding: 0;
+			}
+		</style>
+		<script>
+			jQuery('.pno-field-editor textarea').each(function () {
+				var textarea = jQuery(this);
+				jQuery( textarea ).trumbowyg({
+					removeformatPasted: true,
+					tagsToRemove: [ 'script' ],
+					autogrow: true,
+					autogrowOnEnter: true,
+					btns: [
+						['formatting'],
+						['strong', 'em', 'del'],
+						['link'],
+						['unorderedList', 'orderedList'],
+						['horizontalRule'],
+						['removeformat'],
+					]
+				})
+			});
+		</script>
+		<?php
+	}
+
+}, 9999 );
